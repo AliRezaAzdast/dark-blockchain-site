@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased bg-zinc-900 text-white font-body;
+  }
+  header{
+    @apply font-heading
+  }
+  .my-container{
+    @apply sm:px-4 md:px-8 lg:px-22 m-auto
+  }
+  
+  
+}
+
+@theme{
+    --font-heading: JetBrains Mono,"sans-serif" ;
+    --font-body: Karla, "sans-serif";
+
+    --breakpoint-*: initial;
+    --breakpoint-sm: 375px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1200px;
+}
