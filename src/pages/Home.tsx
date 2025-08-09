@@ -1,9 +1,11 @@
-import Header from "../sections/Header"
+import HeaderSection from "../sections/HeaderSection"
+import HeroSection from "../sections/HeroSection"
 
 function Home() {
     return (
         <>
-            <Header />
+            <HeaderSection />
+            <HeroSection/>
         </>
     )
 }

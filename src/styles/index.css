@@ -17,7 +17,7 @@
 }
 
 @theme{
-    --font-heading: JetBrains Mono,"sans-serif" ;
+    --font-heading: Inter,"sans-serif" ;
     --font-body: Karla, "sans-serif";
 
     --breakpoint-*: initial;
