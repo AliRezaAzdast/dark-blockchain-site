@@ -6,11 +6,7 @@ function CutCornerButton(props: ComponentPropsWithoutRef<'button'>) {
     const { className, children } = props
     return (
         <button className={twMerge('relative cursor-pointer bg-fuchsia-500/20 px-4 py-2 font-extrabold uppercase font-heading text-sm tracking-wide', className)}>
-            <div className="absolute inset-0 outline-2 -outline-offset-2 outline-fuchsia-500"
-                style={{
-                    maskImage: 'linear-gradient(225deg, transparent, transparent 10px, black 10px)',
-                    WebkitMaskImage: 'linear-gradient(225deg, transparent, transparent 10px, black 10px)'
-                }}></div>
+            <div className="absolute inset-0 outline-2 -outline-offset-2 outline-fuchsia-500 [mask-image:linear-gradient(225deg,transparent,transparent_10px,black_10px)]"></div>
             <svg
                 width="24"
                 height="24"

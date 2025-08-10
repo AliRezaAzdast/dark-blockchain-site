@@ -1,3 +1,4 @@
+import FeaturesCards from "../sections/FeaturesCards"
 import HeaderSection from "../sections/HeaderSection"
 import HeroSection from "../sections/HeroSection"
 
@@ -6,6 +7,7 @@ function Home() {
         <>
             <HeaderSection />
             <HeroSection/>
+            <FeaturesCards/>
         </>
     )
 }
