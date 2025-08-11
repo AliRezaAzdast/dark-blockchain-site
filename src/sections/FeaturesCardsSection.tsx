@@ -1,5 +1,6 @@
 
 import { twMerge } from "tailwind-merge"
+import TextButton from "../components/TextButton"
 const cardData = [
     { id: 1, image: '/assets/images/pill.png', title: 'Revolutionary Blockchain API', description: 'Effortlsesly integrate and manage blockchain data with out cuting ege Api, designed for seamless connectivity.', color: 'fuchsia' },
     { id: 2, image: '/assets/images/cuboid.png', title: 'Decentralized Data Solution', description: 'Empower your application with decentralized data solution ensuring security and transparency at everystep.', color: 'lime' },
@@ -7,7 +8,7 @@ const cardData = [
     { id: 1, image: '/assets/images/icosahedron.png', title: 'Seamless Blockchain Integration', description: 'Integrate blockchain technology seamlessly into your projects, with minimal effort and maximum efficiency.', color: 'violet' },
 ]
 
-function FeaturesCards() {
+function FeaturesCardsSection() {
     return (
         <section className="py-24 overflow-x-clip md:-mt-28">
             <div className="my-container">
@@ -28,7 +29,7 @@ function FeaturesCards() {
                                 <h3 className="font-heading font-black text-3xl mt-12">{title}</h3>
                                 <p className="text-lg text-zinc-400 mt-4">{description}</p>
                                 <div className="flex justify-between mt-12">
-                                    <button className={twMerge("text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500", color === 'lime' && 'text-lime-500', color === "cyan" && 'text-cyan-500', color === 'violet' && 'text-violet-500')}>Learn More</button>
+                                    <TextButton color={color}>Learn More</TextButton>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-8 text-zinc-500 group-hover:text-zinc-300 transition duration-300 -translate-x-2 group-hover:translate-x-0">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                                     </svg>
@@ -51,4 +52,4 @@ function FeaturesCards() {
     )
 }
 
-export default FeaturesCards
+export default FeaturesCardsSection
