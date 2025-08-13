@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react"
 import { twMerge } from "tailwind-merge";
 
 
-function TextButton(props: ComponentPropsWithoutRef<'button'> & { color: string }) {
+function TextButton(props: ComponentPropsWithoutRef<'button'> & { color?: string }) {
   const { className,children, color } = props
   return (
     <button
