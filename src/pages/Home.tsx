@@ -5,6 +5,7 @@ import HeroSection from "../sections/HeroSection"
 import LatestPostsSection from "../sections/LatestPostsSection"
 
 import data from "../content.generated.json";
+import TestimonialsSection from "../sections/TestimonialsSection"
 
 function Home() {
     const posts = data.blog;
@@ -18,6 +19,7 @@ function Home() {
             <FeaturesCardsSection />
             <FeaturesGridSection />
             <LatestPostsSection latestPosts={latestPosts}/>
+            <TestimonialsSection/>
         </>
     )
 }
