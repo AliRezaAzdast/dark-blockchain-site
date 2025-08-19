@@ -1,5 +1,7 @@
+import { useRef } from "react"
 import CutCornerButton from "../components/CutCornerButton"
 import TextButton from "../components/TextButton"
+import { motion, useScroll, useTransform } from "motion/react"
 
 const listItems = [
   'Experience unparalleled security and scalability',
@@ -9,6 +11,44 @@ const listItems = [
 
 
 function FeaturesGridSection() {
+  const torusKnotRef = useRef(null)
+  const firsthemisphereRef = useRef(null)
+  const coneRef = useRef(null)
+  const secendhemisphereRef = useRef(null)
+  // ---------------------------------//
+  const { scrollYProgress: torusKnotScrollYProgress } = useScroll({
+    target: torusKnotRef,
+    offset: ['start end', 'end start'],
+  })
+  const torusKnotTranslatey = useTransform(torusKnotScrollYProgress, [0, 1], [100, -100])
+  const torusKnotRotate = useTransform(torusKnotScrollYProgress, [0, 1], [30, -30])
+
+  // ---------------------------------//
+  const { scrollYProgress: firsthemisphereScrollYProgress } = useScroll({
+    target: firsthemisphereRef,
+    offset: ['start end', 'end start'],
+  })
+  const firsthemisphereTranslatey = useTransform(firsthemisphereScrollYProgress, [0, 1], [50, -50])
+  const firsthemisphereRotate = useTransform(firsthemisphereScrollYProgress, [0, 1], [-20, -50])
+
+  // ---------------------------------//
+  
+  const { scrollYProgress: coneScrollYProgress } = useScroll({
+    target: coneRef,
+    offset: ['start end', 'end start'],
+  })
+  const coneTranslatey = useTransform(coneScrollYProgress, [0, 1], [100, -100])
+  const coneRotate = useTransform(coneScrollYProgress, [0, 1], [12, 45])
+
+  // ---------------------------------//
+
+  const { scrollYProgress: secendhemisphereScrollYProgress } = useScroll({
+    target: secendhemisphereRef,
+    offset: ['start end', 'end start'],
+  })
+  const secendhemisphereTranslatey = useTransform(secendhemisphereScrollYProgress, [0, 1], [50, -50])
+  const secendhemisphereRotate = useTransform(secendhemisphereScrollYProgress, [0, 1], [-20, 10])
+
   return (
     <section className="py-24 overflow-x-clip">
       <div className='my-container'>
@@ -34,16 +74,16 @@ function FeaturesGridSection() {
             </div>
             <div className="hidden md:block">
               <div className="inline-flex relative z-0">
-                <img src="./assets/images/torus-knot.png" alt="Torus knot 3d" className="size-96 max-w-none" />
-                <img src="./assets/images/hemisphere.png" alt="Hemisphere 3D" className="absolute top-3/4 size-96 -z-10 scale-x-[-1]" />
+                <motion.img ref={torusKnotRef} style={{ translateY: torusKnotTranslatey, rotate: torusKnotRotate }} src="./assets/images/torus-knot.png" alt="Torus knot 3d" className="size-96 max-w-none" />
+                <motion.img ref={firsthemisphereRef} style={{ translateY: firsthemisphereTranslatey, rotate: firsthemisphereRotate }} src="./assets/images/hemisphere.png" alt="Hemisphere 3D" className="absolute top-3/4 size-96 -z-10 scale-x-[-1]" />
               </div>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="relative hidden md:block">
               <div className="absolute right-0 z-0">
-                <img src="./assets/images/cone.png" alt="cone 3d" className="size-96 max-w-none rotate-12" />
-                <img src="./assets/images/hemisphere.png" alt="Hemisphere 3D" className="absolute top-3/4 size-96 -z-10" />
+                <motion.img ref={coneRef} style={{ translateY: coneTranslatey, rotate: coneRotate }} src="./assets/images/cone.png" alt="cone 3d" className="size-96 max-w-none rotate-12" />
+                <motion.img ref={secendhemisphereRef} style={{ translateY: secendhemisphereTranslatey, rotate: secendhemisphereRotate }} src="./assets/images/hemisphere.png" alt="Hemisphere 3D" className="absolute top-3/4 size-96 -z-10" />
               </div>
             </div>
             <div className="col-span-2">
