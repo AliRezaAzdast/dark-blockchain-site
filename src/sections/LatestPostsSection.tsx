@@ -3,6 +3,8 @@ import { getColorFromCatagory } from "../utils/PostUtils"
 import Tag from "../components/Tag"
 import CutCornerButton from "../components/CutCornerButton"
 import { twMerge } from "tailwind-merge"
+import { useScroll, motion, useTransform } from "motion/react"
+import { useRef } from "react"
 
 
 type Post = {
@@ -17,7 +19,12 @@ interface LatestPostsSectionProps {
 
 
 function LatestPostsSection({ latestPosts }: LatestPostsSectionProps) {
-
+    const targetRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start end', 'start center'],
+    })
+    const marginTop =useTransform(scrollYProgress, [0, 1], [0, 62])
     return (
         <section className="py-60">
             <div className="my-container">
@@ -30,12 +37,13 @@ function LatestPostsSection({ latestPosts }: LatestPostsSectionProps) {
                         {latestPosts.map(({ title, description, category }, postIndex) => (
                             <Card key={postIndex} buttonText="Read More" color={getColorFromCatagory(category)} className={twMerge((postIndex === 1 || postIndex === 3) && 'md:hidden')}>
                                 <Tag color={getColorFromCatagory(category)}>{category}</Tag>
-                                <h3 className="font-heading font-black text-3xl mt-3">{title}</h3>
-                                <p className="text-lg text-zinc-400 mt-6">{description}</p>
+                                <h3 className="font-heading font-black text-3xl mt-3 line-clamp-1">{title}</h3>
+                                <p className="text-lg text-zinc-400 mt-6 line-clamp-2">{description}</p>
                             </Card>
                         ))}
                     </div>
-                    <div className="hidden md:flex  flex-col gap-8 mt-16">
+                    <motion.div ref={targetRef} className="hidden md:flex  flex-col gap-8 mt-16"
+                        style={{ marginTop: marginTop }}>
                         {latestPosts.map(({ title, description, category }, postIndex) => (
                             <Card key={postIndex} buttonText="Read More" color={getColorFromCatagory(category)} className={twMerge((postIndex === 0 || postIndex === 2) && 'md:hidden')}>
                                 <Tag color={getColorFromCatagory(category)}>{category}</Tag>
@@ -43,7 +51,7 @@ function LatestPostsSection({ latestPosts }: LatestPostsSectionProps) {
                                 <p className="text-lg text-zinc-400 mt-6">{description}</p>
                             </Card>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
                 <div className="flex justify-center mt-48 md:mt-32">
                     <CutCornerButton>Read The Blog</CutCornerButton>
