@@ -1,13 +1,13 @@
 import FeaturesCardsSection from "../sections/FeaturesCardsSection"
 import FeaturesGridSection from "../sections/FeaturesGridSection"
-import HeaderSection from "../sections/HeaderSection"
+
 import HeroSection from "../sections/HeroSection"
 import LatestPostsSection from "../sections/LatestPostsSection"
 
 import data from "../content.generated.json";
 import TestimonialsSection from "../sections/TestimonialsSection"
 import CallToActionSection from "../sections/CallToActionSection"
-import FooterSection from "../sections/FooterSection"
+
 
 function Home() {
     const posts = data.blog;
@@ -16,14 +16,14 @@ function Home() {
   .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime()).slice(0, 4);
     return (
         <>
-            <HeaderSection />
+
             <HeroSection />
             <FeaturesCardsSection />
             <FeaturesGridSection />
             <LatestPostsSection latestPosts={latestPosts}/>
             <TestimonialsSection/>
             <CallToActionSection/>
-            <FooterSection/>
+
         </>
     )
 }
